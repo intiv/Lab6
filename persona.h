@@ -11,5 +11,5 @@ class persona{
 	persona(string,bool,string,string,string,bool);
 	string toString()const;
 };
-const persona& operator+( persona&,persona&);
-const persona& operator*(const persona&,const persona&);
+const persona operator+( persona&,persona&);
+const persona operator*(persona&,persona&);
