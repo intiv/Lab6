@@ -14,27 +14,31 @@ persona::persona(string nombre, bool genero, string colorCabello, string colorPi
 }
 
 const persona& persona::operator+(const persona& humano){
-	if (humano.colorCabello == "oscuro" || humano.colorOjos == "oscuros" || humano.colorPiel == "blanca"){
-		this -> genCabello = "AA";
-		humano.genCabello = "AA";
-		this -> genOjos = "AA";
-		humano.genOjos = "AA";
-		this -> genPiel = "AA";
-		humano.genPiel = "AA";
-	}
-	if (humano.colorCabello == "rubio" || humano.colorOjos == "verdes" || humano.colorPiel == "oscura"){
-		this -> genCabello = "aa";
-		humano.genCabello = "aa";
-		this -> genOjos = "aa";
-		humano.genOjos = "aa";
-		this -> genPiel = "aa";
-		humano.genPiel = "aa";
-	}
-	if (humano.colorCabello == "pelirrojo" || humano.colorOjos == "azules"){
-		this -> genCabello = "bb";
-		humano.genCabello = "bb";
-		this -> genOjos = "bb";
-		humano.genOjos = "bb";
+	if (humano.fertil && this -> fertil){
+		if (humano.colorCabello == "oscuro" || humano.colorOjos == "oscuros" || humano.colorPiel == "blanca"){
+			this -> genCabello = "AA";
+			humano.genCabello = "AA";
+			this -> genOjos = "AA";
+			humano.genOjos = "AA";
+			this -> genPiel = "AA";
+			humano.genPiel = "AA";
+		}
+		if (humano.colorCabello == "rubio" || humano.colorOjos == "verdes" || humano.colorPiel == "oscura"){
+			this -> genCabello = "aa";
+			humano.genCabello = "aa";
+			this -> genOjos = "aa";
+				humano.genOjos = "aa";
+			this -> genPiel = "aa";
+			humano.genPiel = "aa";
+		}
+		if (humano.colorCabello == "pelirrojo" || humano.colorOjos == "azules"){
+			this -> genCabello = "bb";
+			humano.genCabello = "bb";
+			this -> genOjos = "bb";
+			humano.genOjos = "bb";
+		}
+	} else {
+		exit(1);
 	}
 }
 
