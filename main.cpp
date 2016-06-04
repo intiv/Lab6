@@ -19,7 +19,7 @@ int main(int argc,char* argv[]){
 	srand(time(NULL));
 	bool continuar=true;
 	while(continuar){
-		cout<<"1. Agregar persona"<<endl<<"2. Sexo sin proteccion"<<"3. Durex contra el muro"<<"4. Salir"<<endl;
+		cout<<"1. Agregar persona"<<endl<<"2. Sexo sin proteccion"<<endl<<"3. Durex contra el muro"<<endl<<"4. Salir"<<endl;
 		int op;
 		cin>>op;
 		string name="", haircolor="",skincolor="",eyecolor="";
@@ -60,15 +60,14 @@ int main(int argc,char* argv[]){
 				cin>>second;
 				if((Personas.at(first).genero&&!Personas.at(second).genero)||(!Personas.at(first).genero&&Personas.at(second).genero)){
 					persona hijo=(Personas.at(first)+Personas.at(second));
-					if(hijo.nombre!=""){		
+					if(hijo.colorCabello!=""){		
 						Personas.push_back(hijo);
-						cout<<"Nacio "<<hijo.toString()<<", Felicidades ahora se tienen que casar y vivir infelizmente juntos por siempre";
+						cout<<"Nacio "<<hijo.toString()<<", Felicidades ahora se tienen que casar y vivir infelizmente juntos por siempre"<<endl;
 					}
 				}else{
 					cout<<"GOD SHALL DELIVER HIS HOLY JUDGEMENT UPON THE FAGS"<<endl;
 				}
 			}else{
-
 				cout<<"No hay suficientes personas para tener sexo salvaje del duro, agregue mas personas"<<endl;
 			}			 
 		}else if(op==3){
