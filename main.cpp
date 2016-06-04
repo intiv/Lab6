@@ -72,6 +72,8 @@ int main(int argc,char* argv[]){
 					if(hijo.colorCabello!=""){		
 						Personas.push_back(hijo);
 						cout<<"Nacio "<<hijo.toString()<<", Felicidades ahora se tienen que casar y vivir infelizmente juntos por siempre"<<endl;
+					}else{
+						cout<<endl<<"SE SALVARON, NO TUVIERON HIJOS ESOS 2 LECHEROS"<<endl;
 					}
 				}else{
 					cout<<"GOD SHALL DELIVER HIS HOLY JUDGEMENT UPON THE FAGS"<<endl;
@@ -90,7 +92,12 @@ int main(int argc,char* argv[]){
 				cin>>second;
 				if((Personas.at(first).genero&&!Personas.at(second).genero)||(!Personas.at(first).genero&&Personas.at(second).genero)){
 					persona hijo=(Personas.at(first)*Personas.at(second));
-					Personas.push_back(hijo);
+					if(hijo.colorCabello!=""){
+						Personas.push_back(hijo);
+						cout<<"NACIO "<<hijo.toString()<<", FELICIDADES AHORA VALIERON PIJA Y SE TIENEN QUE CASAR"<<endl;
+					}else{
+						cout<<endl<<"SE SALVARON, NO QUEDO PRENIADA"<<endl;
+					}
 				}else{
 					cout<<"GOD SHALL DELIVER HIS HOLY JUDGEMENT UPON THE FAGS"<<endl;
 				}
