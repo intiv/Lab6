@@ -3,10 +3,10 @@
 
 using std::string;
 class persona{
+ public:
 	string colorCabello, colorPiel, colorOjos,genCabello,genOjos,genPiel;
-	bool genero, fertil;
- private:
 	string nombre;
+	bool genero, fertil;
 	persona();
 	persona(string,bool,string,string,string,bool);
 	string toString();
