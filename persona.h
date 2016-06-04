@@ -3,11 +3,13 @@
 
 using std::string;
 class persona{
-	string nombre, colorCabello, colorPiel, colorOjos,genCabello,genOjos,genPiel;
+	string colorCabello, colorPiel, colorOjos,genCabello,genOjos,genPiel;
 	bool genero, fertil;
  private:
+	string nombre;
 	persona();
 	persona(string,bool,string,string,string,bool);
-	const persona& operator+(const persona&);
-	const persona& operator*(const persona&);
+	string toString();
 };
+const persona& operator+(const persona&,const persona&);
+const persona& operator*(const persona&,const persona&);
