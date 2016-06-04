@@ -1,0 +1,19 @@
+Menu:
+1. Agregar Personas
+2. Sexo sin proteccion
+3. Sexo con condon Durex ultra patrocinado por Durex^tm
+4. Eliminar persona
+5. Salir
+
+
+1: Se le pedira los datos de la persona. Para color de cabello ingrese oscuro, rubio o pelirrojo.
+para los ojos ingrese oscuros,verdes o azules
+para la piel ingrese oscura o blanca
+
+2: Se necesitan 2 personas por lo menos, una mujer y un hombre. Se le listaran todas las personas en el vector y usted debe elegir el indice de las 2 personas. Si se ingresaron opciones validas, las personas elegidas precederan a ser unos cerdos y tener sexo prematrimonial sin proteccion en contra de todas las ensenianzas del senior jesucristo padre de todos los pecadores. Hay un 22% de chance que tengan un hijo bastardo creado a base de sus pecados el cual sera integrado a la sociedad y odiado por los demas inculso sus propios padres al darse cuenta que es un engendro del demonio.
+
+3: Lo mismo que en el 2, pero ahora usan condon. hay un 0.125 (aprox) de chance que tengan un hijos bastardo engendro del demonio.
+
+4: se le listaran todas las personas. Elija el subindice de la persona que desea eliminar. Si ingrise UltimoIndice+1 se eliminaran todas las personas.
+
+5: Sale de la bastardia hecha en este programa, no mas hijos engendros hijos de satanas seran procreados a partir de sexo prematrimonial por 2 personas fijas para irse al infierno, especialmente si esas 2 personas son familiares. 

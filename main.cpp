@@ -19,12 +19,13 @@ int main(int argc,char* argv[]){
 	srand(time(NULL));
 	bool continuar=true;
 	while(continuar){
-		cout<<"***************************
+		cout<<"***************************"<<endl;;
 		cout<<"* 1. Agregar persona      *"
 	      <<endl<<"* 2. Sexo sin proteccion  *"
 	      <<endl<<"* 3. Durex contra el muro *"
-	      <<endl<<"* 4. Salir		 *"
-		    <<"***************************
+	      <<endl<<"* 4. Eliminar Personas	  *"
+	      <<endl<<"* 5. Salir		  *"<<
+	       endl <<"***************************"
 		<<endl<<endl;
 		int op;
 		cin>>op;
@@ -55,6 +56,7 @@ int main(int argc,char* argv[]){
 			}else{
 				fertile=false;
 			}
+			cout<<persona(name,gender,haircolor,skincolor,eyecolor,fertile).toString()<<endl;
 			Personas.push_back(persona(name,gender,haircolor,skincolor,eyecolor,fertile));
 		}else if(op==2){ 
 			if(Personas.size()>=2){
