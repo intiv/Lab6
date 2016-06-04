@@ -8,7 +8,7 @@
 
 using std::cout;
 using std::string;
-using std::streamstring;
+using std::stringstream;
 
 persona::persona(){
 	this->nombre = "";

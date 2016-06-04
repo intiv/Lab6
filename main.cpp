@@ -12,7 +12,7 @@ using std::endl;
 using std::string;
 using std::vector;
 
-void printHumans(const vector<persona>&);
+void printHumans(vector<persona>&);
 
 int main(int argc,char* argv[]){
 	vector<persona> Personas;

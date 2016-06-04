@@ -9,7 +9,7 @@ class persona{
 	bool genero, fertil;
 	persona();
 	persona(string,bool,string,string,string,bool);
-	string toString();
+	string toString()const;
 };
-const persona& operator+(const persona&,const persona&);
+const persona& operator+( persona&,persona&);
 const persona& operator*(const persona&,const persona&);
