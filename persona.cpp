@@ -11,90 +11,108 @@ using std::string;
 using std::stringstream;
 
 persona::persona(){
-	this->colorCabello = "";
+	this->nombre = "";
 }
 
 persona::persona(string nombre, bool genero, string colorCabello, string colorPiel, string colorOjos, bool fertil):
 				 nombre(nombre),genero(genero),colorCabello(colorCabello),colorPiel(colorPiel),colorOjos(colorOjos),fertil(fertil){
+	if (this -> colorCabello == "oscuro" || this -> colorOjos == "oscuros" || this -> colorPiel == "blanca"){
+		this -> genCabello = "AA";
+		this -> genOjos = "AA";
+		this -> genPiel = "AA";
+	} else if (this -> colorCabello == "rubio" || this -> colorOjos == "verdes" || this -> colorPiel == "oscura"){	
+		this -> genCabello = "aa";
+		this -> genOjos = "aa";
+		this -> genPiel = "aa";
+	} else if (this -> colorCabello == "pelirrojo" || this -> colorOjos == "azules"){
+		this -> genCabello = "bb";
+		this -> genOjos = "bb";
+	}
 }
 
 const persona operator+(persona& humano1, persona& humano2){
 	persona nuevoHumano;
 	if (humano1.fertil && humano2.fertil){
 		if((humano1.genero && !humano2.genero) || (!humano1.genero && humano2.genero)){
-			int esMami = (rand() % 101);
+			int esMami = (1 + rand() % 100);
 			if (esMami < 22){
-				if (humano1.colorCabello == "oscuro" || humano1.colorOjos == "oscuros" || humano1.colorPiel == "blanca"){
-					humano1.genCabello = "AA";
-					humano1.genOjos = "AA";
-					humano1.genPiel = "AA";
-				} else if (humano1.colorCabello == "rubio" || humano1.colorOjos == "verdes" || humano1.colorPiel == "oscura"){	
-					humano1.genCabello = "aa";
-					humano1.genOjos = "aa";
-					humano1.genPiel = "aa";
-				} else if (humano1.colorCabello == "pelirrojo" || humano1.colorOjos == "azules"){
-					humano1.genCabello = "bb";
-					humano1.genOjos = "bb";
-				} else if(humano2.colorCabello == "oscuro" || humano2.colorOjos == "oscuros" || humano2.colorPiel == "blanca"){
-					humano2.genCabello = "AA";
-					humano2.genOjos = "AA";
-					humano2.genPiel = "AA";
-				} else if(humano2.colorCabello == "rubio" || humano2.colorOjos == "verdes" || humano2.colorPiel == "oscura"){
-					humano2.genCabello = "aa";
-					humano2.genOjos = "aa";
-					humano2.genPiel = "aa";
-				} else if(humano2.colorCabello == "pelirrojo" || humano2.colorOjos == "azules"){
-					humano2.genCabello = "bb";
-					humano2.genOjos = "bb";
-				}
 				if (humano1.genCabello == humano2.genCabello){
-					if(humano1.genCabello == "AA" && humano2.genCabello == "AA")
+					if(humano1.genCabello == "AA" && humano2.genCabello == "AA"){
 						nuevoHumano.colorCabello = "oscuro";
-					else if (humano1.genCabello == "aa" && humano2.genCabello == "aa")
+						nuevoHumano.genCabello = "AA";
+					}
+					else if (humano1.genCabello == "aa" && humano2.genCabello == "aa"){
 						nuevoHumano.colorCabello = "rubio";
-					else if (humano1.genCabello == "bb" && humano2.genCabello == "bb")
+						nuevoHumano.genCabello = "aa";
+					}
+					else if (humano1.genCabello == "bb" && humano2.genCabello == "bb"){
 						nuevoHumano.colorCabello = "pelirrojo";
+						nuevoHumano.genCabello = "bb";
+					}
 				} else {
-					if (humano1.genCabello == "AA" && humano2.genCabello != "AA" || humano1.genCabello != "AA" && humano2.genCabello == "AA")
+					if (humano1.genCabello == "AA" && humano2.genCabello == "aa"){
 						nuevoHumano.colorCabello = "oscuro"; 
-					else {
+						nuevoHumano.genCabello = "Aa";
+					} else if (humano1.genCabello == "AA" && humano2.genCabello == "bb"){
+						nuevoHumano.colorCabello = "oscuro"; 
+						nuevoHumano.genCabello = "Ab";
+					} else if ((humano1.genCabello == "aa" && humano2.genCabello == "bb") || (humano1.genCabello == "bb" && humano2.genCabello == "aa")){
 						int cabelloRandom = (rand() % 2);
 						if (cabelloRandom == 0){
 							nuevoHumano.colorCabello = "rubio";
+							nuevoHumano.genCabello = "ab";
 						} else {
 							nuevoHumano.colorCabello = "pelirrojo";
+							nuevoHumano.genCabello = "ab";
 						}
 					}
 				}
+
 				if (humano1.genOjos == humano2.genOjos){
-					if(humano1.genOjos == "AA" && humano2.genOjos == "AA")
-						nuevoHumano.colorOjos = "oscuros"; 
-					else if (humano1.genCabello == "aa" && humano2.genCabello == "aa")
+					if(humano1.genOjos == "AA" && humano2.genOjos == "AA"){
+						nuevoHumano.colorOjos = "oscuros";
+						nuevoHumano.genOjos = "AA";
+					}
+					else if (humano1.genOjos == "aa" && humano2.genOjos == "aa"){
 						nuevoHumano.colorOjos = "verdes";
-					else if (humano1.genCabello == "bb" && humano2.genCabello == "bb")
+						nuevoHumano.genOjos = "aa";
+					}
+					else if (humano1.genOjos == "bb" && humano2.genOjos == "bb"){
 						nuevoHumano.colorOjos = "azules";
+						nuevoHumano.genOjos = "bb";
+					}
 				} else {
-					if (humano1.genOjos == "AA" && humano2.genOjos != "AA" || humano1.genOjos != "AA" && humano2.genOjos == "AA")
-						nuevoHumano.colorOjos = "oscuros"; 
-					else {
+					if ((humano1.genOjos == "AA" && humano2.genOjos == "aa") || (humano1.genOjos == "aa" && humano2.genOjos == "AA")){
+						nuevoHumano.colorOjos = "oscuro"; 
+						nuevoHumano.genOjos = "Aa";
+					} else if ((humano1.genOjos == "AA" && humano2.genOjos == "bb") || (humano1.genOjos == "bb" && humano2.genOjos == "AA")){
+						nuevoHumano.colorOjos = "oscuro"; 
+						nuevoHumano.genOjos = "Ab";
+					} else if ((humano1.genOjos == "aa" && humano2.genOjos == "bb") || (humano1.genOjos == "bb" && humano2.genOjos == "aa")){
 						int ojosRandom = (rand() % 2);
 						if (ojosRandom == 0){
-							nuevoHumano.colorOjos = "verdes";
+							nuevoHumano.colorOjos = "rubio";
+							nuevoHumano.genOjos = "ab";
 						} else {
-							nuevoHumano.colorOjos = "azules";
+							nuevoHumano.colorOjos = "pelirrojo";
+							nuevoHumano.genOjos = "ab";
 						}
 					}
 				}
+
 				if (humano1.genPiel == humano2.genPiel){
-					if(humano1.genPiel == "AA" && humano2.genPiel == "AA")
+					if(humano1.genPiel == "AA" && humano2.genPiel == "AA"){
 						nuevoHumano.colorPiel = "blanca";
-					else if (humano1.genPiel == "aa" && humano2.genPiel == "aa")
+						nuevoHumano.genPiel = "AA";
+					}
+					else if (humano1.genPiel == "aa" && humano2.genPiel == "aa"){
 						nuevoHumano.colorPiel = "oscura";
+						nuevoHumano.genPiel = "aa";
+					}
 				} else {
-					if (humano1.genPiel == "AA" && humano2.genPiel != "AA" || humano1.genPiel != "AA" && humano2.genPiel == "AA")
-						nuevoHumano.colorPiel = "blanca";
-					else {
-						nuevoHumano.colorPiel = "oscura";
+					if ((humano1.genPiel == "AA" && humano2.genPiel == "aa") || (humano1.genPiel == "aa" && humano2.genPiel == "AA")){
+						nuevoHumano.colorPiel = "oscuro"; 
+						nuevoHumano.genPiel = "Aa";
 					}
 				}
 			}
@@ -112,79 +130,10 @@ const persona operator*(persona& humano1, persona& humano2){
 	if (humano1.fertil && humano2.fertil){
 		if((humano1.genero && !humano2.genero) || (!humano1.genero && humano2.genero)){
 			int esMami = (rand() % 101);
-			if (esMami < 22){
-				if (humano1.colorCabello == "oscuro" || humano1.colorOjos == "oscuros" || humano1.colorPiel == "blanca"){
-					humano1.genCabello = "AA";
-					humano1.genOjos = "AA";
-					humano1.genPiel = "AA";
-				} else if (humano1.colorCabello == "rubio" || humano1.colorOjos == "verdes" || humano1.colorPiel == "oscura"){	
-					humano1.genCabello = "aa";
-					humano1.genOjos = "aa";
-					humano1.genPiel = "aa";
-				} else if (humano1.colorCabello == "pelirrojo" || humano1.colorOjos == "azules"){
-					humano1.genCabello = "bb";
-					humano1.genOjos = "bb";
-				} else if(humano2.colorCabello == "oscuro" || humano2.colorOjos == "oscuros" || humano2.colorPiel == "blanca"){
-					humano2.genCabello = "AA";
-					humano2.genOjos = "AA";
-					humano2.genPiel = "AA";
-				} else if(humano2.colorCabello == "rubio" || humano2.colorOjos == "verdes" || humano2.colorPiel == "oscura"){
-					humano2.genCabello = "aa";
-					humano2.genOjos = "aa";
-					humano2.genPiel = "aa";
-				} else if(humano2.colorCabello == "pelirrojo" || humano2.colorOjos == "azules"){
-					humano2.genCabello = "bb";
-					humano2.genOjos = "bb";
-				}
-				if (humano1.genCabello == humano2.genCabello){
-					if(humano1.genCabello == "AA" && humano2.genCabello == "AA")
-						nuevoHumano.colorCabello = "oscuro";
-					else if (humano1.genCabello == "aa" && humano2.genCabello == "aa")
-						nuevoHumano.colorCabello = "rubio";
-					else if (humano1.genCabello == "bb" && humano2.genCabello == "bb")
-						nuevoHumano.colorCabello = "pelirrojo";
-				} else {
-					if (humano1.genCabello == "AA" && humano2.genCabello != "AA" || humano1.genCabello != "AA" && humano2.genCabello == "AA")
-						nuevoHumano.colorCabello = "oscuro"; 
-					else {
-						int cabelloRandom = (rand() % 2);
-						if (cabelloRandom == 0){
-							nuevoHumano.colorCabello = "rubio";
-						} else {
-							nuevoHumano.colorCabello = "pelirrojo";
-						}
-					}
-				}
-				if (humano1.genOjos == humano2.genOjos){
-					if(humano1.genOjos == "AA" && humano2.genOjos == "AA")
-						nuevoHumano.colorOjos = "oscuros"; 
-					else if (humano1.genCabello == "aa" && humano2.genCabello == "aa")
-						nuevoHumano.colorOjos = "verdes";
-					else if (humano1.genCabello == "bb" && humano2.genCabello == "bb")
-						nuevoHumano.colorOjos = "azules";
-				} else {
-					if (humano1.genOjos == "AA" && humano2.genOjos != "AA" || humano1.genOjos != "AA" && humano2.genOjos == "AA")
-						nuevoHumano.colorOjos = "oscuros"; 
-					else {
-						int ojosRandom = (rand() % 2);
-						if (ojosRandom == 0){
-							nuevoHumano.colorOjos = "verdes";
-						} else {
-							nuevoHumano.colorOjos = "azules";
-						}
-					}
-				}
-				if (humano1.genPiel == humano2.genPiel){
-					if(humano1.genPiel == "AA" && humano2.genPiel == "AA")
-						nuevoHumano.colorPiel = "blanca";
-					else if (humano1.genPiel == "aa" && humano2.genPiel == "aa")
-						nuevoHumano.colorPiel = "oscura";
-				} else {
-					if (humano1.genPiel == "AA" && humano2.genPiel != "AA" || humano1.genPiel != "AA" && humano2.genPiel == "AA")
-						nuevoHumano.colorPiel = "blanca";
-					else {
-						nuevoHumano.colorPiel = "oscura";
-					}
+			if(esMami == 1){
+				int esMamita = (1 + rand() % 100);
+				if (esMamita<22){
+					
 				}
 			}
 			return nuevoHumano;
@@ -198,6 +147,6 @@ const persona operator*(persona& humano1, persona& humano2){
 
 string persona::toString() const{
 	stringstream ss;
-	ss << "Persona: " << this -> nombre << ", " << this -> colorCabello << ", " << this -> colorOjos << ", " << this -> colorPiel;
+	ss << "Persona -> Nombre: " << this -> nombre << ", Cabello " << this -> colorCabello << ", Color de ojos " << this -> colorOjos << ", Color de piel " << this -> colorPiel;
 	return ss.str();
 }
