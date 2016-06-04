@@ -16,12 +16,12 @@ persona::persona(string nombre, bool genero, string colorCabello, string colorPi
 				 nombre(nombre),genero(genero),colorCabello(colorCabello),colorPiel(colorPiel),colorOjos(colorOjos),fertil(fertil){
 }
 
-const persona& persona::operator+(const persona& humano1, const persona humano2){
+const persona& operator+(const persona& humano1, const persona& humano2){
 	persona nuevoHumano;
 	if (humano1.fertil && this -> fertil){
 		if((humano1.genero && !this -> genero) || (!humano1.genero && this -> genero)){
-			int preñada = (rand() % 101);
-			if (preñada < 22){
+			int esMami = (rand() % 101);
+			if (esMami < 22){
 				if (humano1.colorCabello == "oscuro" || humano1.colorOjos == "oscuros" || humano1.colorPiel == "blanca"){
 					humano1.genCabello = "AA";
 					humano1.genOjos = "AA";
@@ -49,14 +49,37 @@ const persona& persona::operator+(const persona& humano1, const persona humano2)
 					if(humano1.genCabello == "AA" || humano2.genCabello == "AA")
 						nuevoHumano.colorCabello = "oscuro"; 
 				} else {
-					if (humano1.genCabello == "AA" && humano2.genCabello != "AA"){
-						int cabelloRandom = (rand() % 2);
+					if (humano1.genCabello == "AA" && humano2.genCabello != "AA" || humano1.genCabello != "AA" && humano2.genCabello == "AA")
+						nuevoHumano.colorCabello = "oscuro"; 
+					else {
+						int ojoRandom = (rand() % 2);
 						if (cabelloRandom == 0){
 							nuevoHumano.colorCabello = "rubio";
 						} else {
 							nuevoHumano.colorCabello = "pelirrojo";
 						}
 					}
+				}
+				if (humano1.genOjos == humano2.genOjos){
+					if(humano1.genOjos == "AA" || humano2.genOjos == "AA")
+						nuevoHumano.genOjos = "oscuros"; 
+				} else {
+					if (humano1.genOjos == "AA" && humano2.genOjos != "AA" || humano1.genOjos != "AA" && humano2.genOjos == "AA")
+						nuevoHumano.genOjos = "oscuros"; 
+					else {
+						int ojosRandom = (rand() % 2);
+						if (ojosRandom == 0){
+							nuevoHumano.genOjos = "verdes";
+						} else {
+							nuevoHumano.genOjos = "azules";
+						}
+					}
+				}
+				if (humano1.genPiel == humano2.genPiel){
+					if(humano1.genOjos == "AA" || humano2.genOjos == "AA")
+						nuevoHumano.genOjos = "oscuros"; 
+				} else {
+
 				}
 			}
 		} else {
@@ -67,10 +90,10 @@ const persona& persona::operator+(const persona& humano1, const persona humano2)
 	}
 }
 
-const persona& persona::operator*(const persona& humano){
+const persona& operator*(const persona& humano1, const persona& humano2){
 	
 }
 
-string persona::toString() const{
+string toString() const{
 
 }
