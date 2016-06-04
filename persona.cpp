@@ -1,5 +1,6 @@
 #include "persona.h"
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -7,6 +8,7 @@
 
 using std::cout;
 using std::string;
+using std::streamstring;
 
 persona::persona(){
 	this->nombre = "";
@@ -16,10 +18,10 @@ persona::persona(string nombre, bool genero, string colorCabello, string colorPi
 				 nombre(nombre),genero(genero),colorCabello(colorCabello),colorPiel(colorPiel),colorOjos(colorOjos),fertil(fertil){
 }
 
-const persona& operator+(const persona& humano1, const persona& humano2){
+const persona& operator+(persona& humano1, persona& humano2){
 	persona nuevoHumano;
-	if (humano1.fertil && this -> fertil){
-		if((humano1.genero && !this -> genero) || (!humano1.genero && this -> genero)){
+	if (humano1.fertil && humano2.fertil){
+		if((humano1.genero && !humano2.genero) || (!humano1.genero && humano2.genero)){
 			int esMami = (rand() % 101);
 			if (esMami < 22){
 				if (humano1.colorCabello == "oscuro" || humano1.colorOjos == "oscuros" || humano1.colorPiel == "blanca"){
@@ -52,7 +54,7 @@ const persona& operator+(const persona& humano1, const persona& humano2){
 					if (humano1.genCabello == "AA" && humano2.genCabello != "AA" || humano1.genCabello != "AA" && humano2.genCabello == "AA")
 						nuevoHumano.colorCabello = "oscuro"; 
 					else {
-						int ojoRandom = (rand() % 2);
+						int cabelloRandom = (rand() % 2);
 						if (cabelloRandom == 0){
 							nuevoHumano.colorCabello = "rubio";
 						} else {
@@ -76,8 +78,8 @@ const persona& operator+(const persona& humano1, const persona& humano2){
 					}
 				}
 				if (humano1.genPiel == humano2.genPiel){
-					if(humano1.genOjos == "AA" || humano2.genOjos == "AA")
-						nuevoHumano.genOjos = "oscuros"; 
+					if(humano1.genPiel == "AA" || humano2.genPiel == "AA")
+						nuevoHumano.genPiel = "oscuros"; 
 				} else {
 
 				}
@@ -94,6 +96,8 @@ const persona& operator*(const persona& humano1, const persona& humano2){
 	
 }
 
-string toString() const{
-
+string persona::toString() const{
+	stringstream ss;
+	ss << "Persona: " << this -> nombre << ", " << this -> colorCabello << ", " << this -> colorOjos << ", " << this -> colorPiel;
+	return ss.str();
 }
