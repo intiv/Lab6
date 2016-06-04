@@ -3,7 +3,7 @@
 
 using std::string;
 class persona{
-	string nombre, colorCabello, colorPiel, colorOjos,gen;
+	string nombre, colorCabello, colorPiel, colorOjos,genCabello,genOjos,genPiel;
 	bool genero, fertil;
  private:
 	persona();
