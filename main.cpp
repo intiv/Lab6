@@ -19,7 +19,13 @@ int main(int argc,char* argv[]){
 	srand(time(NULL));
 	bool continuar=true;
 	while(continuar){
-		cout<<"1. Agregar persona"<<endl<<"2. Sexo sin proteccion"<<endl<<"3. Durex contra el muro"<<endl<<"4. Salir"<<endl;
+		cout<<"***************************
+		cout<<"* 1. Agregar persona      *"
+	      <<endl<<"* 2. Sexo sin proteccion  *"
+	      <<endl<<"* 3. Durex contra el muro *"
+	      <<endl<<"* 4. Salir		 *"
+		    <<"***************************
+		<<endl<<endl;
 		int op;
 		cin>>op;
 		string name="", haircolor="",skincolor="",eyecolor="";
@@ -32,7 +38,8 @@ int main(int argc,char* argv[]){
 				gender=true;
 			}else{
 				gender=false;
-			}	
+			}
+			cin.ignore();	
 			cout<<"Ingrese nombre:"<<endl;
 			getline(cin,name);
 			cout<<"Ingrese color de cabello:"<<endl;
@@ -89,6 +96,20 @@ int main(int argc,char* argv[]){
 				cout<<"No hay suficientes personas para tener sexo salvaje del duro, agregue mas personas"<<endl;
 			}
 		}else if(op==4){
+			if(Personas.size()>0){
+				printHumans(Personas);
+				int pos;
+				cout<<"Ingrese posicion de persona a eliminar. Ingrese "<<Personas.size()<<" para eliminarlos todos"<<endl;
+				cin>>pos;
+				if(pos==Personas.size()){
+					Personas.clear();
+				}else{
+					Personas.erase(Personas.begin()+pos);
+				}
+			}else{
+				cout<<"No hay personas para eliminar."<<endl;
+			}
+		}else if(op==5){
 			continuar=false;
 		}
 
@@ -96,10 +117,8 @@ int main(int argc,char* argv[]){
 	return 0;
 }
 
-
 void printHumans( vector<persona>& Personas){
 	for(int i=0;i<Personas.size();i++){
 		cout<<i<<" - "<<Personas.at(i).toString()<<endl;	
 	}
-
 }
