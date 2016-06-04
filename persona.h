@@ -7,10 +7,7 @@ class persona{
 	bool genero, fertil;
  private:
 	persona();
-	persona(string,bool,string,string,string,bool,string);
-	bool operator+(const persona&);
-	bool operator*(const persona&);
-	
-
-
+	persona(string,bool,string,string,string,bool);
+	const persona& operator+(const persona&);
+	const persona& operator*(const persona&);
 };
