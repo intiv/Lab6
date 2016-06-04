@@ -4,9 +4,15 @@
 #include<cstdlib>
 #include<ctime>
 #include<cmath>
+#include<iostream>
 
+using std::cout;
+using std::cin;
+using std::endl;
 using std::string;
 using std::vector;
+
+void printHumans(const vector<persona>&);
 
 int main(int argc,char* argv[]){
 	vector<persona> Personas;
@@ -44,7 +50,7 @@ int main(int argc,char* argv[]){
 			}
 			Personas.push_back(persona(name,gender,haircolor,skincolor,eyecolor,fertile));
 		}else if(op==2){ 
-			if(Persona.size()>=2){
+			if(Personas.size()>=2){
 				int first,second;
 				printHumans(Personas);
 				cout<<"Ingrese posicion en la base de datos de la primera persona a tener setso setsi salvaje:"<<endl;
@@ -53,10 +59,10 @@ int main(int argc,char* argv[]){
 				cout<<"Ingrese posicion en la base de datos de la segunda persona a tener setso setsi salvaje:"<<endl;
 				cin>>second;
 				if((Personas.at(first).genero&&!Personas.at(second).genero)||(!Personas.at(first).genero&&Personas.at(second).genero)){
-					Persona hijo=(Personas.at(first)+Personas.at(second));
+					persona hijo=(Personas.at(first)+Personas.at(second));
 					if(hijo.nombre!=""){		
 						Personas.push_back(hijo);
-						cout<<"Nacio "<<hijo.toString()<<", Felicidades ahora se tienen que casar y vivir infelizmente juntos por siempre"
+						cout<<"Nacio "<<hijo.toString()<<", Felicidades ahora se tienen que casar y vivir infelizmente juntos por siempre";
 					}
 				}else{
 					cout<<"GOD SHALL DELIVER HIS HOLY JUDGEMENT UPON THE FAGS"<<endl;
@@ -66,7 +72,7 @@ int main(int argc,char* argv[]){
 				cout<<"No hay suficientes personas para tener sexo salvaje del duro, agregue mas personas"<<endl;
 			}			 
 		}else if(op==3){
-			if(Persona.size()>=2){
+			if(Personas.size()>=2){
 				int first,second;
 				printHumans(Personas);
 				cout<<"Ingrese posicion en la base de datos de la primera persona a tener setso setsi salvaje:"<<endl;
@@ -75,7 +81,7 @@ int main(int argc,char* argv[]){
 				cout<<"Ingrese posicion en la base de datos de la segunda persona a tener setso setsi salvaje:"<<endl;
 				cin>>second;
 				if((Personas.at(first).genero&&!Personas.at(second).genero)||(!Personas.at(first).genero&&Personas.at(second).genero)){
-					Persona hijo=(Personas.at(first)*Personas.at(second));
+					persona hijo=(Personas.at(first)*Personas.at(second));
 					Personas.push_back(hijo);
 				}else{
 					cout<<"GOD SHALL DELIVER HIS HOLY JUDGEMENT UPON THE FAGS"<<endl;
@@ -92,7 +98,7 @@ int main(int argc,char* argv[]){
 }
 
 
-void printHumans(const vector<persona>& Personas){
+void printHumans( vector<persona>& Personas){
 	for(int i=0;i<Personas.size();i++){
 		cout<<i<<" - "<<Personas.at(i).toString()<<endl;	
 	}
